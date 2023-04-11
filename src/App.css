@@ -1,12 +1,7 @@
-html, body, .main, #root {
+html, body, #root, main {
     height: 100%;
     width: 100%;
     margin: 0;
-}
-
-body {
-    --size: min(75vw, 75vh);
-    --innerSize: calc(var(--size) * 0.2);
 }
 
 #root {
@@ -15,15 +10,17 @@ body {
     align-items: center;
 }
 
-.main {
-    background-color: #282c34;
-}
-
-.gameDisplay {
+main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #282c34;
+    --size: min(75vw, 75vh);
+    --innerSize: calc(var(--size) * 0.2);
+}
+
+.gameDisplay {
     margin-top: min(12.5vw, 12.5vh);
 }
 
@@ -54,16 +51,61 @@ body {
     height: calc(var(--size) * 0.1);
 }
 
-.buttons {
-    width: 50px;
+.buttons, .lost > button {
+    /* width: 50px; */
+    font-size: large;
     background-color: aliceblue;
     text-align: center;
     border-radius: 15px;
     border: 2px solid aqua;
     cursor: pointer;
+    margin: 2px;
     /* outline: red; */
 }
 
-.buttons:hover {
+.buttons:hover, .lost > button:hover {
     background-color: aqua;
+}
+
+.lost {
+    display: flex;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: hsla(0, 54%, 14%, 0.896);
+    border: 5px solid rgb(108, 1, 1);
+    border-radius: 10%/5%;
+    width: calc(var(--size) * 0.7);
+    margin-top: min(12.5vw, 12.5vh);
+    aspect-ratio: 1/1.5;
+    color: white;
+    z-index: 5;
+}
+
+.lost > #Score {
+    position: absolute;
+    top: 1rem;
+}
+
+.lost > #Highest {
+    position: absolute;
+    top: 4rem;
+}
+
+.lost > button {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.alive {
+    position: absolute;
+    text-align: center;
+    color: white;
+    z-index: 5;
+    top: 0;
+}
+
+.alive > button {
+    display: none;
 }
